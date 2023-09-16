@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font';
 import { BlurView } from '@react-native-community/blur';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
  Platform,
  ScrollView,
@@ -29,7 +29,13 @@ const App = () => {
   MontserratBold: require('./assets/fonts/Montserrat-Bold.ttf'),
  });
 
- if (fontsLoaded) {
+ const [permission, requestPermission] = Camera.useCameraPermissions();
+
+ useEffect(() => {
+  requestPermission();
+ }, []);
+
+ if (fontsLoaded && permission.granted) {
   return (
    <View style={styles.screenContainer}>
     <MaskedView
