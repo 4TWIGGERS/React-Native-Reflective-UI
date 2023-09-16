@@ -3,6 +3,8 @@ import { BlurView } from '@react-native-community/blur';
 
 import React, { useEffect } from 'react';
 import {
+ Alert,
+ Linking,
  Platform,
  ScrollView,
  StatusBar,
@@ -31,38 +33,63 @@ const App = () => {
 
  const [permission, requestPermission] = Camera.useCameraPermissions();
 
+ const goToSettings = () =>
+  Alert.alert(
+   '',
+   'You do not have a camera permission. Go to application settings and enable it manually.',
+   [
+    {
+     text: 'Not right now',
+     onPress: () => console.log('Cancel Pressed'),
+     style: 'cancel',
+    },
+    {
+     text: 'Go to settings',
+     onPress: () => Linking.openSettings(),
+    },
+   ]
+  );
+
  useEffect(() => {
   requestPermission();
  }, []);
 
- if (fontsLoaded && permission.granted) {
+ useEffect(() => {
+  if (permission && !permission.granted) {
+   goToSettings();
+  }
+ }, [permission]);
+
+ if (fontsLoaded) {
   return (
    <View style={styles.screenContainer}>
-    <MaskedView
-     style={styles.maskViewStyle}
-     maskElement={
-      <>
-       <Header />
-       <Story />
-       <ScrollView>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-       </ScrollView>
-       <Tabs />
-      </>
-     }>
-     <Camera style={{ flex: 1 }} type={CameraType.back}></Camera>
-     <BlurView
-      style={styles.blurViewStyle}
-      blurType='light'
-      blurAmount={20}
-      reducedTransparencyFallbackColor='white'
-     />
-    </MaskedView>
+    {permission.granted && (
+     <MaskedView
+      style={styles.maskViewStyle}
+      maskElement={
+       <>
+        <Header />
+        <Story />
+        <ScrollView>
+         <Post />
+         <Post />
+         <Post />
+         <Post />
+         <Post />
+         <Post />
+        </ScrollView>
+        <Tabs />
+       </>
+      }>
+      <Camera style={{ flex: 1 }} type={CameraType.back}></Camera>
+      <BlurView
+       style={styles.blurViewStyle}
+       blurType='light'
+       blurAmount={20}
+       reducedTransparencyFallbackColor='white'
+      />
+     </MaskedView>
+    )}
    </View>
   );
  }
