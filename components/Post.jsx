@@ -7,8 +7,8 @@ const Post = () => {
    <View style={styles.userPhoto}></View>
 
    <View>
-    <Text style={[styles.textStyle, { fontSize: 16 }]}>4Twiggers</Text>
-    <Text style={[styles.textStyle, { marginTop: 10 }]}>
+    <Text style={[styles.textStyle]}>4Twiggers</Text>
+    <Text style={[styles.textStyle, styles.descStyle]}>
      Software Developers Company
     </Text>
    </View>
@@ -25,17 +25,17 @@ const styles = StyleSheet.create({
   alignItems: 'center',
  },
  userPhoto: {
-  width: 60,
-  height: 60,
-  borderRadius: 60,
+  width: 70,
+  height: 70,
+  borderRadius: 70,
   marginLeft: 10,
   borderColor: 'white',
   borderWidth: 3,
   marginRight: 20,
  },
-
  textStyle: {
-  fontSize: 14,
+  fontSize: 17,
   fontFamily: 'MontserratBold',
  },
+ descStyle: { marginTop: 10, fontFamily: 'MontserratRegular', fontSize: 15 },
 });

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { SCREEN_WIDTH } from '../utils/dimensions';
 
-const size = SCREEN_WIDTH / 4 - 15;
+const size = SCREEN_WIDTH / 4 - 10;
 
 const Story = () => {
  return (
@@ -21,14 +21,13 @@ export default Story;
 const styles = StyleSheet.create({
  storyContainer: {
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'space-evenly',
   marginBottom: 20,
  },
  userPhoto: {
   width: size,
   height: size,
   borderRadius: size,
-  marginHorizontal: 5,
   borderColor: 'white',
   borderWidth: 3,
   marginRight: 0,
