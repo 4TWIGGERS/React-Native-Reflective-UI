@@ -1,4 +1,4 @@
-rootProject.name = 'React-Native-Reflective-UI'
+rootProject.name = 'Reflective UI'
 
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()
