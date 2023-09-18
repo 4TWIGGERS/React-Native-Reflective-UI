@@ -1,16 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const Post = () => {
+const Post = ({ user }) => {
  return (
   <View style={styles.postContainer}>
    <View style={styles.userPhoto}></View>
 
    <View>
-    <Text style={[styles.textStyle]}>4Twiggers</Text>
-    <Text style={[styles.textStyle, styles.descStyle]}>
-     Software Developers Company
-    </Text>
+    <Text style={[styles.textStyle]}>{user.name}</Text>
+    <Text style={[styles.textStyle, styles.descStyle]}>{user.role}</Text>
    </View>
   </View>
  );

@@ -15,7 +15,7 @@ export default Header;
 
 const styles = StyleSheet.create({
  twiggersIcon: {
-  height: 80,
+  height: 70,
   justifyContent: 'center',
   marginTop: 50,
   flexDirection: 'row',

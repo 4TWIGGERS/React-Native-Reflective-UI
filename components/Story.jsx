@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
  storyContainer: {
   flexDirection: 'row',
   justifyContent: 'space-evenly',
-  marginBottom: 20,
+  marginBottom: 10,
  },
  userPhoto: {
   width: size,

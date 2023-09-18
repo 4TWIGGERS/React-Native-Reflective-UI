@@ -25,6 +25,33 @@ if (Platform.OS === 'android') {
  StatusBar.setBackgroundColor('transparent');
 }
 
+const usersArray = [
+ {
+  name: 'Nika Gabunia',
+  role: 'Chief Executive Officer',
+ },
+ {
+  name: 'Jeko Tediashvili',
+  role: 'Web/Mobile Developer',
+ },
+ {
+  name: 'Niko Chopikashvili',
+  role: 'NodeJS Developer',
+ },
+ {
+  name: 'Alexander Pataridze',
+  role: 'Junior Developer',
+ },
+ {
+  name: 'Miranda Pagava',
+  role: 'Project Manager',
+ },
+ {
+  name: 'Nika Kereselidze',
+  role: 'NodeJS Developer',
+ },
+];
+
 const App = () => {
  const [fontsLoaded] = useFonts({
   MontserratRegular: require('./assets/fonts/Montserrat-Regular.ttf'),
@@ -70,18 +97,15 @@ const App = () => {
        <>
         <Header />
         <Story />
-        <ScrollView>
-         <Post />
-         <Post />
-         <Post />
-         <Post />
-         <Post />
-         <Post />
-        </ScrollView>
+
+        {usersArray.map((user, i) => (
+         <Post key={i} user={user} />
+        ))}
+
         <Tabs />
        </>
       }>
-      <Camera style={{ flex: 1 }} type={CameraType.back}></Camera>
+      <Camera style={{ flex: 1 }} ratio='16:9' type={CameraType.back}></Camera>
       <BlurView
        style={styles.blurViewStyle}
        blurType='light'
@@ -115,5 +139,6 @@ const styles = StyleSheet.create({
   bottom: 0,
   right: 0,
   flex: 1,
+  zIndex: Platform.OS === 'android' ? -1 : 10,
  },
 });
