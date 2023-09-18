@@ -139,6 +139,6 @@ const styles = StyleSheet.create({
   bottom: 0,
   right: 0,
   flex: 1,
-  zIndex: Platform.OS === 'android' ? -1 : 10,
+  display: Platform.OS === 'android' ? 'none' : 'flex',
  },
 });
